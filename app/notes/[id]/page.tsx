@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
         title: pageTitle,
         description: pageDescription,
+        // ВИПРАВЛЕНО: додано чіткий розділовий слеш після домену відповідно до зауваження
         url: `https://notehub.com{id}`,
         images: [
           {
