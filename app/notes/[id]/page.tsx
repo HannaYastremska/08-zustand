@@ -22,11 +22,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
         title: pageTitle,
         description: pageDescription,
-        // ВИПРАВЛЕНО: додано чіткий розділовий слеш після домену відповідно до зауваження
-        url: `https://notehub.com{id}`,
+
+        url: `https://notehub.com/{id}`,
         images: [
           {
-            url: 'https://goit.global',
+            url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
             width: 1200,
             height: 630,
             alt: note.title,

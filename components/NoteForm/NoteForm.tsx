@@ -34,7 +34,7 @@ const NoteForm = ({ onClose }: NoteFormProps) => {
     const { name, value } = e.target;
 
     if (name === 'tag') {
-      setDraft({ [name]: value as any }); // Кастимо тип для безпечного запису в Zustand
+      setDraft({ [name]: value as any });
     } else {
       setDraft({ [name]: value });
     }
