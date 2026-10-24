@@ -1,71 +1,78 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
-.formGroup {
+.fieldWrap {
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  gap: 8px;
+}
+
+.label {
   font-weight: 500;
-  color: #212529;
+  font-size: 14px;
+  color: #495057;
 }
 
 .input,
 .textarea,
 .select {
-  margin-top: 4px;
-  padding: 8px 12px;
+  width: 100%;
+  padding: 10px 14px;
   font-size: 14px;
   border: 1px solid #ced4da;
-  border-radius: 4px;
-  resize: none;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
 .actions {
   display: flex;
-  justify-content: flex-end;
-  gap: 8px;
+  justify-content: flex-end; /* Вирівнює кнопки праворуч */
+  gap: 12px;
+  margin-top: 10px;
 }
 
-.submitButton {
-  padding: 8px 16px;
-  font-size: 16px;
+.submitBtn,
+.cancelBtn {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.submitBtn {
   background-color: #0d6efd;
   color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
-.submitButton:hover {
+.submitBtn:hover {
   background-color: #0b5ed7;
 }
 
-.submitButton:disabled {
-  background-color: #6c757d;
-  cursor: not-allowed;
-}
-
-.cancelButton {
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #f8f9fa;
-  color: #212529;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.cancelButton:hover {
+.cancelBtn {
   background-color: #e2e6ea;
+  color: #495057;
 }
 
-.error {
-  color: #dc3545;
-  font-size: 12px;
-  margin-top: 4px;
+.cancelBtn:hover {
+  background-color: #dae0e5;
 }

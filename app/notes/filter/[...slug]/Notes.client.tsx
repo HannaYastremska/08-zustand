@@ -1,21 +1,22 @@
 'use client';
-
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { useDebouncedCallback } from 'use-debounce';
 import { fetchNotes } from '../../../../lib/api';
 import SearchBox from '../../../../components/SearchBox/SearchBox';
 import NoteList from '../../../../components/NoteList/NoteList';
 import Pagination from '../../../../components/Pagination/Pagination';
-import Modal from '../../../../components/Modal/Modal';
-import NoteForm from '../../../../components/NoteForm/NoteForm';
 import css from './notes.module.css';
 
-const NotesClient = ({ tag }: { tag: string }) => {
+interface NotesClientProps {
+  tag: string;
+}
+
+const NotesClient = ({ tag }: NotesClientProps) => {
   const [page, setPage] = useState<number>(1);
   const [search, setSearch] = useState<string>('');
   const [debouncedSearch, setDebouncedSearch] = useState<string>('');
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     setPage(1);
@@ -39,10 +40,9 @@ const NotesClient = ({ tag }: { tag: string }) => {
   });
 
   return (
-    <div className={css.app} suppressHydrationWarning>
-      <header className={css.toolbar} suppressHydrationWarning>
+    <div className={css.app}>
+      <header className={css.toolbar}>
         <SearchBox value={search} onChange={handleSearchChange} />
-
         {data && data.totalPages > 1 && (
           <div>
             <Pagination
@@ -52,24 +52,17 @@ const NotesClient = ({ tag }: { tag: string }) => {
             />
           </div>
         )}
-
-        <button className={css.button} onClick={() => setIsModalOpen(true)}>
+        {}
+        <Link href="/notes/action/create" className={css.button}>
           Create note +
-        </button>
+        </Link>
       </header>
-
-      <main suppressHydrationWarning>
+      <main>
         {isLoading && <p>Loading, please wait...</p>}
         {isError && <p>Something went wrong.</p>}
-
         {data && data.notes.length > 0 && <NoteList notes={data.notes} />}
-
         {data && data.notes.length === 0 && !isLoading && <p>No notes found. Create a new one!</p>}
       </main>
-
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <NoteForm onClose={() => setIsModalOpen(false)} />
-      </Modal>
     </div>
   );
 };

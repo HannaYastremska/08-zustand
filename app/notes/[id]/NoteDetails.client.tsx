@@ -39,9 +39,9 @@ const NoteDetailsClient = () => {
         </p>
 
         {}
-        <span className={css.date} suppressHydrationWarning>
+        <div className={css.date} suppressHydrationWarning>
           {note.createdAt}
-        </span>
+        </div>
       </div>
     </main>
   );

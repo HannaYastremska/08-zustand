@@ -46,7 +46,9 @@ const NotePreviewClient = () => {
 
           <p className={css.content}>{note.content}</p>
 
-          <div className={css.date}>{note.createdAt}</div>
+          <div className={css.date} suppressHydrationWarning>
+            {note.createdAt}
+          </div>
         </div>
       </div>
     </Modal>
