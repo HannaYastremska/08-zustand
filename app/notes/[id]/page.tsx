@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: pageTitle,
         description: pageDescription,
 
-        url: `https://notehub.com/{id}`,
+        url: `https://notehub.com/${id}`,
         images: [
           {
             url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
